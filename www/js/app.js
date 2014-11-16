@@ -7,6 +7,36 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('myApp', ['ionic', 'app.controllers', 'app.services'])
 
+.config(function($stateProvider, $urlRouterProvider) {
+
+  // Ionic uses AngularUI Router which uses the concept of states
+  // Learn more here: https://github.com/angular-ui/ui-router
+  // Set up the various states which the app can be in.
+  // Each state's controller can be found in controllers.js
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/home/lista');
+
+  // setup an abstract state for the tabs directive
+  $stateProvider.state('home', {
+    url: "/home",
+    templateUrl: "templates/home.html",
+    controller: "HomeCtrl"
+  })
+
+  .state('home.lista', {
+    url: "/lista",
+    templateUrl: "templates/lista.html",
+    controller: "ListaCtrl"
+  })
+
+  .state('home.cesta', {
+    url: '/cesta',
+    templateUrl: "templates/cesta.html",
+    controller: "CestaCtrl"
+  });
+  
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,35 +49,21 @@ angular.module('myApp', ['ionic', 'app.controllers', 'app.services'])
       StatusBar.styleDefault();
     }
   });
-})
 
-.config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
-
-    // setup an abstract state for the tabs directive
-    $stateProvider.state('home', {
-      url: "/",
-      templateUrl: "templates/home.html",
-      controller: "HomeCtrl"
-    })
-
-    .state('lista', {
-      url: "/lista",
-      templateUrl: "templates/lista.html",
-      controller: "ListaCtrl"
-    })
-
-    .state('cesta', {
-      url: '/cesta',
-      templateUrl: "templates/cesta.html",
-      controller: "CestaCtrl"
+  $ionicPlatform.registerBackButtonAction(function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Salir',
+      template: '¿Estás seguro de que quieres salir?'
     });
+    confirmPopup.then(function(res) {
+      if(res) {
+        /*alert("salimos");*/
+        ionic.Platform.exitApp();
+      } else {
+        /*alert('Seguimos aquí');*/
+      }
+    });
+  }, 100);
 
 });
 

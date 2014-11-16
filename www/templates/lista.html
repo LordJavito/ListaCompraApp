@@ -1,5 +1,17 @@
-<ion-view title="Lista">
-  <ion-content class="padding">
-    <h1>Lista</h1>
-  </ion-content>
+<ion-view>
+	<ion-content class="padding has-tabs-top">
+		<div class="intro">
+		  	<p class="inline">Nombre: </p>
+		   <input class="input_nombre inline" type="text" ng-model="nuevoProducto.name"/>
+		   <button ng-click="addProducto()">Añadir</button>
+	 	</div>
+	  	<ul class="lista padding">
+	  		<li ng-repeat="producto in productos">
+	  			<p class="inline input_nombre">{{producto.name}}</p>
+	  			<input type="checkbox" class="inline input_done" ng-model="producto.done">
+	  			<button ng-click="moveToCart()">Mover a Cesta</button>
+	  			<!-- <p class="inline input_nombre">{{producto.done}}</p> -->
+	  		</li>
+	  	</ul>
+  	</ion-content>
 </ion-view>

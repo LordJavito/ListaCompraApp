@@ -1,5 +1,11 @@
-<ion-view title="Cesta">
-  <ion-content class="padding">
-    <h1>Cesta</h1>
-  </ion-content>
+<ion-view>
+	<ion-content class="padding has-tabs-top">
+		<ul>
+    		<li ng-repeat="producto in cart">
+    			<div class="padding">
+    				- {{producto}}
+    			</div>
+    		</li>
+    	</ul>
+  	</ion-content>
 </ion-view>

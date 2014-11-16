@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+.view{position: initial} /* Permite ver el tab-bar */
+.center{text-align: center}
+.inline{display: inline !important; padding: 10px !important}
+.border{border: 1px solid black;}
+input{border: 1px solid black !important; border-radius: 10px;}
+.input_nombre{width: 50%}
+.input_done{width: 10%}
+.intro button{position: absolute; top: 5px; margin-left: 15px;}
+
+.lista li{margin-bottom: 15px;}}
